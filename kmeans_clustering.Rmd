@@ -13,6 +13,7 @@ The number of clusters is not known beforehand, so testing different `center` pa
 
 ```{r}
 library(dplyr)
+set.seed(1000)
 
 pokemon <- read.csv('pokemon.csv')
 
@@ -69,11 +70,12 @@ df.summ <- df %>%
 print(df.summ)
 ```
 
+
 We can see from the summary statistics that:
 
-* Cluster 2 has the highest mean HP
-* Cluster 1 has the highest mean attack
-* Cluster 1 has the highest mean defense
-* Cluster 2 has the highest mean special attack
-* Cluster 1 has the highest mean special defense
-* Cluster 2 has the highest mean speed
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.HP),1])` has the highest mean HP
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.Attack),1])` has the highest mean attack
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.Defense),1])` has the highest mean defense
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.Sp.Atk),1])` has the highest mean special attack
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.Sp.Def),1])` has the highest mean special defense
+* Cluster `r unlist(df.summ[which.max(df.summ$mean.Speed),1])` has the highest mean speed
