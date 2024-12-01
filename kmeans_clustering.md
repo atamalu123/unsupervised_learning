@@ -8,21 +8,7 @@ The number of clusters is not known beforehand, so testing different
 `center` parameters may be a good idea.
 
 ``` r
-library(dplyr)
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
+suppressPackageStartupMessages(library(dplyr))
 set.seed(1000)
 
 pokemon <- read.csv('pokemon.csv')

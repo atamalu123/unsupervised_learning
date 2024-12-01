@@ -1,0 +1,39 @@
+---
+title: "Hierarchical Clustering"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For this example, the `pokemon` dataset is used
+
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+set.seed(1000)
+
+pokemon <- read.csv('pokemon.csv')
+
+# subset features
+df <- pokemon %>% select(HP, Attack, Defense, Sp.Atk = Sp..Atk, Sp.Def = Sp..Def, Speed)
+head(df)
+```
+
+Now the data is subsetted into a matrix, we can scale the data and run hierarchical clustering on it
+
+```{r}
+df.scaled <- scale(df)
+hclust.model <- hclust(dist(df.scaled))
+```
+
+And view a dendrogram of it with the height limited to 3
+
+```{r}
+suppressPackageStartupMessages(library(dendextend))
+
+dgram <- as.dendrogram(hclust.model)
+dgram2 <- color_branches(dgram, h = 3)
+plot(dgram2)
+```
+

@@ -12,7 +12,7 @@ First we'll run k-means clustering on the `pokemon` dataset from [Kaggle](https:
 The number of clusters is not known beforehand, so testing different `center` parameters may be a good idea. 
 
 ```{r}
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 set.seed(1000)
 
 pokemon <- read.csv('pokemon.csv')
